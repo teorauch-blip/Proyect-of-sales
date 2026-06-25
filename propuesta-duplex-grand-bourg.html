@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta Comercial — Duplexes Grand Bourg · RADIX</title>
+  <style>
+
+    /* ========================================================
+       INSTRUCCIONES PARA EDITAR PRECIOS
+
+       Precio individual (cada duplex): buscar "169.000"
+       Precio conjunto (pack 2 unidades): buscar id="precio-conjunto"
+       El ahorro se calcula automáticamente.
+    ======================================================== */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #0a1220;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color: #FFFFFF;
+    }
+
+    /* ================================================
+       PÁGINAS A4
+    ================================================ */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 28px;
+      background: #172C4D;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media print {
+      body { background: #172C4D; margin: 0; }
+      .page {
+        margin: 0;
+        width: 100%;
+        min-height: 100vh;
+        page-break-after: always;
+        break-after: page;
+      }
+      .page:last-child { page-break-after: auto; break-after: auto; }
+    }
+
+    @page { size: A4; margin: 0; }
+
+    /* ================================================
+       LOGO SVG — helper
+    ================================================ */
+    .radix-logo { display: block; }
+
+    /* ================================================
+       PORTADA
+    ================================================ */
+    .cover {
+      background: linear-gradient(155deg, #172C4D 0%, #0f1e36 55%, #070D18 100%);
+    }
+
+    /* Círculos decorativos */
+    .deco {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(25, 118, 197, 0.13);
+      pointer-events: none;
+    }
+    .deco-a { width: 420px; height: 420px; top: -110px; right: -130px; }
+    .deco-b { width: 260px; height: 260px; top: -40px;  right: -60px; border-color: rgba(25,118,197,0.22); }
+    .deco-c { width: 620px; height: 620px; bottom: -220px; left: -220px; border-color: rgba(25,118,197,0.07); }
+    .deco-d { width: 180px; height: 180px; bottom: 60px; right: 40px; border-color: rgba(25,118,197,0.18); }
+
+    /* Barra lateral izquierda */
+    .cover-side-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, transparent, #1976C5 30%, #1976C5 70%, transparent);
+    }
+
+    .cover-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 52px 52px 48px 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header portada */
+    .cover-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cover-logo-box {
+      width: 54px;
+      height: 70px;
+    }
+    .cover-brand-text {}
+    .cover-brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+    .cover-brand-tagline {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #A8B6C8;
+      margin-top: 3px;
+    }
+
+    .cover-spacer { flex: 1; }
+
+    /* Hero portada */
+    .cover-hero { margin-bottom: 44px; }
+
+    .cover-eyebrow {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #1976C5;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cover-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: #1976C5;
+    }
+
+    .cover-main-title {
+      font-size: 42px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+    .cover-main-title span { color: #2386E3; }
+
+    .cover-description {
+      font-size: 14px;
+      color: #A8B6C8;
+      line-height: 1.7;
+      max-width: 380px;
+      margin-bottom: 30px;
+    }
+
+    .cover-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cbadge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 3px;
+    }
+    .cbadge-primary { background: #1976C5; color: #FFFFFF; }
+    .cbadge-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #A8B6C8;
+    }
+    .cbadge-success { background: rgba(63,166,107,0.15); border: 1px solid rgba(63,166,107,0.4); color: #3FA66B; }
+
+    /* Separator */
+    .cover-separator {
+      height: 1px;
+      background: linear-gradient(90deg, #1976C5, rgba(25,118,197,0.3), transparent);
+      margin-bottom: 24px;
+    }
+
+    /* Footer portada */
+    .cover-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cover-footer-left { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7E8FA5; }
+    .cover-confidential {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7E8FA5;
+      border: 1px solid #2D4A72;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    /* ================================================
+       CABECERA PÁGINAS INTERNAS
+    ================================================ */
+    .page-bar {
+      background: #1F3558;
+      border-bottom: 2px solid #1976C5;
+      padding: 13px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .bar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bar-logo { width: 20px; height: 26px; }
+    .bar-name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+    .bar-section {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7E8FA5;
+    }
+
+    /* ================================================
+       CONTENIDO INTERNO
+    ================================================ */
+    .content { padding: 38px 48px; flex: 1; display: flex; flex-direction: column; }
+
+    .section-eyebrow {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #1976C5;
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+    .section-sub {
+      font-size: 12px;
+      color: #A8B6C8;
+      margin-bottom: 28px;
+    }
+
+    /* ================================================
+       CARDS DE PROPIEDADES
+    ================================================ */
+    .prop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .prop-card {
+      background: #1F3558;
+      border: 1px solid #2D4A72;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .prop-card-head {
+      background: linear-gradient(135deg, #1976C5 0%, #0d5093 100%);
+      padding: 18px 20px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .prop-card-head::after {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+    .prop-unit {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 3px;
+    }
+    .prop-title { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .prop-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    .prop-card-body { padding: 18px 20px; }
+
+    .prop-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #2D4A72;
+      font-size: 12px;
+      color: #A8B6C8;
+    }
+    .prop-location-dot {
+      width: 6px; height: 6px;
+      background: #1976C5;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+    .feat-dot {
+      width: 4px; height: 4px;
+      background: #1976C5;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .feat-content {}
+    .feat-label { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #7E8FA5; }
+    .feat-val { font-size: 12px; color: #FFFFFF; }
+
+    .prop-surface {
+      background: rgba(25,118,197,0.1);
+      border: 1px solid rgba(25,118,197,0.2);
+      border-radius: 4px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .prop-surface-label { font-size: 10px; color: #A8B6C8; letter-spacing: 1px; }
+    .prop-surface-val { font-size: 20px; font-weight: 700; color: #FFFFFF; }
+    .prop-surface-unit { font-size: 11px; color: #A8B6C8; margin-left: 2px; }
+
+    /* ================================================
+       DISTRIBUCIÓN
+    ================================================ */
+    .dist-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7E8FA5;
+      margin-bottom: 12px;
+    }
+    .floor-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .floor-block {
+      background: #1F3558;
+      border: 1px solid #2D4A72;
+      border-left: 3px solid #1976C5;
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+    .floor-title {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #1976C5;
+      margin-bottom: 10px;
+    }
+    .floor-items { display: flex; flex-direction: column; gap: 6px; }
+    .floor-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #FFFFFF;
+    }
+    .floor-item-dot { width: 4px; height: 4px; background: #2386E3; border-radius: 50%; flex-shrink: 0; }
+
+    /* ================================================
+       PÁGINA PRECIOS
+    ================================================ */
+    .price-page { background: linear-gradient(160deg, #172C4D 0%, #0e1b2e 100%); }
+
+    .price-individuals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .price-card-ind {
+      background: #1F3558;
+      border: 1px solid #2D4A72;
+      border-radius: 6px;
+      padding: 20px 22px;
+    }
+    .price-card-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7E8FA5;
+      margin-bottom: 10px;
+    }
+    .price-ind-amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .price-curr { font-size: 13px; color: #A8B6C8; margin-right: 4px; font-weight: 400; }
+    .price-card-ind-sub { font-size: 11px; color: #7E8FA5; margin-top: 5px; }
+
+    /* PRECIO CONJUNTO — valor principal editable */
+    .price-pack-card {
+      background: linear-gradient(135deg, #1976C5 0%, #0d5093 100%);
+      border-radius: 6px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-pack-card::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+    .price-pack-card::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: 80px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .price-pack-left {}
+    .price-pack-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 10px;
+    }
+    .price-pack-amount {
+      font-size: 48px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .price-pack-curr { font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.8); margin-right: 6px; }
+    .price-pack-note { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 8px; }
+    .price-pack-right { text-align: right; flex-shrink: 0; }
+    .price-pack-saving-label { font-size: 10px; color: rgba(255,255,255,0.6); margin-bottom: 6px; letter-spacing: 1px; }
+    .price-pack-saving-val {
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 14px;
+      border-radius: 4px;
+    }
+
+    /* ================================================
+       CONDICIONES DE PAGO
+    ================================================ */
+    .payment-section { margin-bottom: 22px; }
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .payment-card {
+      background: #1F3558;
+      border: 1px solid #2D4A72;
+      border-radius: 6px;
+      padding: 18px 20px;
+    }
+    .payment-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .payment-icon-box {
+      width: 34px; height: 34px;
+      background: rgba(25,118,197,0.15);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .payment-title { font-size: 13px; font-weight: 600; color: #FFFFFF; }
+    .payment-desc { font-size: 12px; color: #A8B6C8; line-height: 1.65; }
+    .pay-highlight { color: #2386E3; font-weight: 600; }
+
+    /* Nota negociación */
+    .nego-note {
+      background: rgba(63,166,107,0.08);
+      border: 1px solid rgba(63,166,107,0.28);
+      border-radius: 6px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .nego-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .nego-text {}
+    .nego-title { font-size: 12px; font-weight: 600; color: #3FA66B; margin-bottom: 3px; }
+    .nego-desc { font-size: 11px; color: #A8B6C8; line-height: 1.6; }
+
+    /* ================================================
+       PÁGINA CONTACTO
+    ================================================ */
+    .contact-page { background: linear-gradient(180deg, #172C4D 0%, #070D18 100%); }
+
+    .contact-hero {
+      background: linear-gradient(135deg, #1976C5 0%, #0d5093 100%);
+      padding: 36px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .contact-hero-label {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-hero-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-hero-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-body { padding: 36px 48px 40px; flex: 1; display: flex; flex-direction: column; }
+
+    /* Equipo */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .team-card {
+      background: #1F3558;
+      border: 1px solid #2D4A72;
+      border-radius: 6px;
+      padding: 20px 22px;
+    }
+    .team-name { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; }
+    .team-role { font-size: 11px; color: #1976C5; font-weight: 600; margin-bottom: 3px; }
+    .team-mat { font-size: 10px; color: #7E8FA5; }
+
+    /* Datos de contacto */
+    .contact-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .contact-card {
+      background: #1F3558;
+      border: 1px solid #2D4A72;
+      border-radius: 6px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-card-icon { font-size: 17px; flex-shrink: 0; }
+    .contact-card-label { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #7E8FA5; margin-bottom: 3px; }
+    .contact-card-val { font-size: 12px; color: #FFFFFF; font-weight: 500; }
+
+    /* Footer final */
+    .doc-footer {
+      border-top: 1px solid #2D4A72;
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-logo-svg { width: 28px; height: 36px; }
+    .footer-name { font-size: 13px; font-weight: 800; letter-spacing: 3px; color: #FFFFFF; }
+    .footer-name-sub { font-size: 9px; letter-spacing: 1px; color: #7E8FA5; margin-top: 2px; }
+    .footer-legal { font-size: 9px; color: #7E8FA5; text-align: right; line-height: 1.7; }
+
+  </style>
+</head>
+<body>
+
+<!-- ================================================
+     PÁGINA 1 — PORTADA
+================================================ -->
+<div class="page cover">
+  <div class="cover-side-bar"></div>
+  <div class="deco deco-a"></div>
+  <div class="deco deco-b"></div>
+  <div class="deco deco-c"></div>
+  <div class="deco deco-d"></div>
+
+  <div class="cover-inner">
+
+    <!-- Marca -->
+    <div class="cover-brand">
+      <div class="cover-logo-box">
+        <!--
+          LOGO RADIX — recreado como SVG
+          (figura con brazos elevados y hoja en el centro superior)
+        -->
+        <svg class="radix-logo" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Brazo superior izquierdo -->
+          <path d="M 148 200
+                   C 138 172, 108 128, 82 96
+                   C 60 68, 50 44, 60 30
+                   C 68 20, 86 22, 96 36"
+                stroke="white" stroke-width="28" stroke-linecap="round"/>
+          <!-- Brazo superior derecho -->
+          <path d="M 152 200
+                   C 162 172, 192 128, 218 96
+                   C 240 68, 250 44, 240 30
+                   C 232 20, 214 22, 204 36"
+                stroke="white" stroke-width="28" stroke-linecap="round"/>
+          <!-- Pierna inferior izquierda -->
+          <path d="M 148 216
+                   C 138 244, 108 292, 84 328
+                   C 62 362, 52 384, 64 394
+                   C 72 402, 90 398, 98 384"
+                stroke="white" stroke-width="28" stroke-linecap="round"/>
+          <!-- Pierna inferior derecha -->
+          <path d="M 152 216
+                   C 162 244, 192 292, 216 328
+                   C 238 362, 248 384, 236 394
+                   C 228 402, 210 398, 202 384"
+                stroke="white" stroke-width="28" stroke-linecap="round"/>
+          <!-- Hoja superior central -->
+          <path d="M 150 10
+                   C 165 24, 168 50, 150 62
+                   C 132 50, 135 24, 150 10 Z"
+                fill="white"/>
+        </svg>
+      </div>
+      <div class="cover-brand-text">
+        <div class="cover-brand-name">RADIX</div>
+        <div class="cover-brand-tagline">Consultores Inmobiliarios</div>
+      </div>
+    </div>
+
+    <div class="cover-spacer"></div>
+
+    <!-- Hero -->
+    <div class="cover-hero">
+      <div class="cover-eyebrow">Propuesta Comercial</div>
+      <div class="cover-main-title">
+        Adquisición de<br>
+        <span>Dos Duplexes</span>
+      </div>
+      <div class="cover-description">
+        Barrio Grand Bourg · Salta Capital<br>
+        Dos unidades a estrenar, idénticas, disponibles como<br>
+        pack de inversión con condiciones de financiación.
+      </div>
+      <div class="cover-badges">
+        <span class="cbadge cbadge-primary">A Estrenar</span>
+        <span class="cbadge cbadge-primary">2 Unidades</span>
+        <span class="cbadge cbadge-success">Precio Negociable</span>
+        <span class="cbadge cbadge-outline">104,9 m² c/u</span>
+      </div>
+    </div>
+
+    <div class="cover-spacer"></div>
+
+    <div class="cover-separator"></div>
+    <div class="cover-footer">
+      <div class="cover-footer-left">Junio 2026 &nbsp;·&nbsp; Salta, Argentina</div>
+      <div class="cover-confidential">Confidencial</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================================================
+     PÁGINA 2 — DESCRIPCIÓN DE LAS PROPIEDADES
+================================================ -->
+<div class="page">
+
+  <div class="page-bar">
+    <div class="bar-brand">
+      <svg class="bar-logo radix-logo" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 148 200 C 138 172, 108 128, 82 96 C 60 68, 50 44, 60 30 C 68 20, 86 22, 96 36"
+              stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 152 200 C 162 172, 192 128, 218 96 C 240 68, 250 44, 240 30 C 232 20, 214 22, 204 36"
+              stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 148 216 C 138 244, 108 292, 84 328 C 62 362, 52 384, 64 394 C 72 402, 90 398, 98 384"
+              stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 152 216 C 162 244, 192 292, 216 328 C 238 362, 248 384, 236 394 C 228 402, 210 398, 202 384"
+              stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 150 10 C 165 24, 168 50, 150 62 C 132 50, 135 24, 150 10 Z" fill="#1976C5"/>
+      </svg>
+      <span class="bar-name">RADIX</span>
+    </div>
+    <div class="bar-section">Descripción de las Propiedades</div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-eyebrow">Las propiedades</div>
+    <div class="section-title">Duplexes en Barrio Grand Bourg</div>
+    <div class="section-sub">Dos unidades idénticas a estrenar · Disponibles individualmente o como pack</div>
+
+    <!-- Cards de propiedades -->
+    <div class="prop-grid">
+
+      <!-- Unidad 01 -->
+      <div class="prop-card">
+        <div class="prop-card-head">
+          <div class="prop-unit">Unidad 01</div>
+          <div class="prop-title">Duplex Grand Bourg</div>
+          <span class="prop-tag">&#9670; A Estrenar</span>
+        </div>
+        <div class="prop-card-body">
+          <div class="prop-location">
+            <div class="prop-location-dot"></div>
+            Barrio Grand Bourg · Salta Capital
+          </div>
+          <div class="features">
+            <div class="feat">
+              <div class="feat-dot"></div>
+              <div class="feat-content">
+                <div class="feat-label">Dormitorios</div>
+                <div class="feat-val">2 dormitorios</div>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-dot"></div>
+              <div class="feat-content">
+                <div class="feat-label">Baños</div>
+                <div class="feat-val">Baño completo</div>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-dot"></div>
+              <div class="feat-content">
+                <div class="feat-label">Toilette</div>
+                <div class="feat-val">Toilette en PB</div>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-dot"></div>
+              <div class="feat-content">
+                <div class="feat-label">Extra</div>
+                <div class="feat-val">Escritorio / Estudio</div>
+              </div>
+            </div>
+          </div>
+          <div class="prop-surface">
+            <span class="prop-surface-label">Superficie Total</span>
+            <div><span class="prop-surface-val">104,9</span><span class="prop-surface-unit">m²</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unidad 02 -->
+      <div class="prop-card">
+        <div class="prop-card-head">
+          <div class="prop-unit">Unidad 02</div>
+          <div class="prop-title">Duplex Grand Bourg</div>
+          <span class="prop-tag">&#9670; A Estrenar</span>
+        </div>
+        <div class="prop-card-body">
+          <div class="prop-location">
+            <div class="prop-location-dot"></div>
+            Barrio Grand Bourg · Salta Capital
+          </div>
+          <div class="features">
+            <div class="feat">
+              <div class="feat-dot"></div>
+              <div class="feat-content">
+                <div class="feat-label">Dormitorios</div>
+                <div class="feat-val">2 dormitorios</div>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-dot"></div>
+              <div class="feat-content">
+                <div class="feat-label">Baños</div>
+                <div class="feat-val">Baño completo</div>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-dot"></div>
+              <div class="feat-content">
+                <div class="feat-label">Toilette</div>
+                <div class="feat-val">Toilette en PB</div>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-dot"></div>
+              <div class="feat-content">
+                <div class="feat-label">Extra</div>
+                <div class="feat-val">Escritorio / Estudio</div>
+              </div>
+            </div>
+          </div>
+          <div class="prop-surface">
+            <span class="prop-surface-label">Superficie Total</span>
+            <div><span class="prop-surface-val">104,9</span><span class="prop-surface-unit">m²</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Distribución interior -->
+    <div class="dist-label">Distribución interior &mdash; Ambas unidades son idénticas</div>
+    <div class="floor-row">
+      <div class="floor-block">
+        <div class="floor-title">Planta Baja</div>
+        <div class="floor-items">
+          <div class="floor-item"><div class="floor-item-dot"></div>Cochera</div>
+          <div class="floor-item"><div class="floor-item-dot"></div>Living</div>
+          <div class="floor-item"><div class="floor-item-dot"></div>Cocina &ndash; Comedor</div>
+          <div class="floor-item"><div class="floor-item-dot"></div>Toilette</div>
+          <div class="floor-item"><div class="floor-item-dot"></div>Galer&iacute;a con Asador</div>
+          <div class="floor-item"><div class="floor-item-dot"></div>Patio</div>
+        </div>
+      </div>
+      <div class="floor-block">
+        <div class="floor-title">Planta Alta</div>
+        <div class="floor-items">
+          <div class="floor-item"><div class="floor-item-dot"></div>Dormitorio principal</div>
+          <div class="floor-item"><div class="floor-item-dot"></div>Dormitorio 2</div>
+          <div class="floor-item"><div class="floor-item-dot"></div>Ba&ntilde;o completo</div>
+          <div class="floor-item"><div class="floor-item-dot"></div>Escritorio / Estudio</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================================================
+     PÁGINA 3 — PRECIO Y CONDICIONES
+================================================ -->
+<div class="page price-page">
+
+  <div class="page-bar" style="background: #0f1e36;">
+    <div class="bar-brand">
+      <svg class="bar-logo radix-logo" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 148 200 C 138 172, 108 128, 82 96 C 60 68, 50 44, 60 30 C 68 20, 86 22, 96 36"
+              stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 152 200 C 162 172, 192 128, 218 96 C 240 68, 250 44, 240 30 C 232 20, 214 22, 204 36"
+              stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 148 216 C 138 244, 108 292, 84 328 C 62 362, 52 384, 64 394 C 72 402, 90 398, 98 384"
+              stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 152 216 C 162 244, 192 292, 216 328 C 238 362, 248 384, 236 394 C 228 402, 210 398, 202 384"
+              stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 150 10 C 165 24, 168 50, 150 62 C 132 50, 135 24, 150 10 Z" fill="#1976C5"/>
+      </svg>
+      <span class="bar-name">RADIX</span>
+    </div>
+    <div class="bar-section">Precio y Condiciones</div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-eyebrow">Propuesta económica</div>
+    <div class="section-title">Precios de Venta</div>
+    <div class="section-sub">Valores expresados en dólares estadounidenses · Precios a convenir</div>
+
+    <!-- Precios individuales -->
+    <div class="price-individuals">
+      <div class="price-card-ind">
+        <div class="price-card-label">Unidad 01 &mdash; Duplex</div>
+        <div class="price-ind-amount">
+          <span class="price-curr">U$D</span>169.000
+        </div>
+        <div class="price-card-ind-sub">Grand Bourg &middot; 104,9 m² &middot; A estrenar</div>
+      </div>
+      <div class="price-card-ind">
+        <div class="price-card-label">Unidad 02 &mdash; Duplex</div>
+        <div class="price-ind-amount">
+          <span class="price-curr">U$D</span>169.000
+        </div>
+        <div class="price-card-ind-sub">Grand Bourg &middot; 104,9 m² &middot; A estrenar</div>
+      </div>
+    </div>
+
+    <!-- ★★★ PRECIO CONJUNTO — EDITAR AQUÍ ★★★
+         Cambiar el número dentro de id="precio-conjunto"
+         El subtítulo también es editable debajo.
+    -->
+    <div class="price-pack-card">
+      <div class="price-pack-left">
+        <div class="price-pack-label">Precio Pack &mdash; Ambas Unidades</div>
+        <div class="price-pack-amount">
+          <span class="price-pack-curr">U$D</span><span id="precio-conjunto">325.000</span>
+        </div>
+        <div class="price-pack-note">Por la adquisici&oacute;n conjunta de las dos unidades</div>
+      </div>
+      <div class="price-pack-right">
+        <div class="price-pack-saving-label">Ahorro vs. precio individual</div>
+        <!-- ★ EDITAR ahorro si cambia el precio conjunto ★ -->
+        <div class="price-pack-saving-val">U$D 13.000</div>
+      </div>
+    </div>
+
+    <!-- Condiciones de pago -->
+    <div class="payment-section">
+      <div class="section-eyebrow" style="margin-bottom: 14px;">Modalidad de pago</div>
+      <div class="payment-grid">
+
+        <div class="payment-card">
+          <div class="payment-head">
+            <div class="payment-icon-box">&#128181;</div>
+            <div class="payment-title">Parte en Efectivo</div>
+          </div>
+          <div class="payment-desc">
+            La <span class="pay-highlight">mayor parte del precio</span> se abona al contado en efectivo,
+            en d&oacute;lares estadounidenses. La proporci&oacute;n exacta se define en la negociaci&oacute;n.
+          </div>
+        </div>
+
+        <div class="payment-card">
+          <div class="payment-head">
+            <div class="payment-icon-box">&#128203;</div>
+            <div class="payment-title">Saldo Financiado</div>
+          </div>
+          <div class="payment-desc">
+            El saldo restante, a elecci&oacute;n del comprador:<br><br>
+            <span class="pay-highlight">&#9312; En pesos ajustado por CAC</span>
+            &nbsp;(Costo de la Construcci&oacute;n)<br><br>
+            <span class="pay-highlight">&#9313; Cuotas fijas en d&oacute;lares</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Nota negociación -->
+    <div class="nego-note">
+      <div class="nego-icon">&#129309;</div>
+      <div class="nego-text">
+        <div class="nego-title">Propuesta abierta a negociaci&oacute;n</div>
+        <div class="nego-desc">
+          Todos los valores, la distribuci&oacute;n entre efectivo y saldo financiado, los plazos
+          y la modalidad de las cuotas son susceptibles de acuerdo entre las partes.
+          Este documento tiene car&aacute;cter orientativo y de base para la negociaci&oacute;n.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================================================
+     PÁGINA 4 — CONTACTO
+================================================ -->
+<div class="page contact-page">
+
+  <div class="contact-hero">
+    <div class="contact-hero-label">Estamos para asesorarte</div>
+    <div class="contact-hero-title">Hablemos</div>
+    <div class="contact-hero-sub">
+      Nuestro equipo te acompa&ntilde;a en cada etapa de la operaci&oacute;n,
+      desde la propuesta hasta la escritura.
+    </div>
+  </div>
+
+  <div class="contact-body">
+
+    <!-- Equipo -->
+    <div class="section-eyebrow" style="margin-bottom: 14px;">Nuestro equipo</div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-name">Teodoro Rauch Uriburu</div>
+        <div class="team-role">Corredor Inmobiliario</div>
+        <div class="team-mat">Matr&iacute;cula N&ordm; 656</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Rosa Uriburu</div>
+        <div class="team-role">Ingeniera Civil</div>
+        <div class="team-mat">Matr&iacute;cula N&ordm; 291</div>
+      </div>
+    </div>
+
+    <!-- Contacto -->
+    <div class="section-eyebrow" style="margin-bottom: 14px;">Datos de contacto</div>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="contact-card-icon">&#128241;</div>
+        <div>
+          <div class="contact-card-label">WhatsApp / Tel&eacute;fono</div>
+          <div class="contact-card-val">+54 387 577 6071</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">&#9993;</div>
+        <div>
+          <div class="contact-card-label">Correo Electr&oacute;nico</div>
+          <div class="contact-card-val">radixsalta@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">&#127760;</div>
+        <div>
+          <div class="contact-card-label">Sitio Web</div>
+          <div class="contact-card-val">radixinmobiliaria.com.ar</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">&#128247;</div>
+        <div>
+          <div class="contact-card-label">Instagram</div>
+          <div class="contact-card-val">@radixinmobiliaria</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer del documento -->
+    <div class="doc-footer">
+      <div class="footer-brand">
+        <svg class="footer-logo-svg radix-logo" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 148 200 C 138 172, 108 128, 82 96 C 60 68, 50 44, 60 30 C 68 20, 86 22, 96 36"
+                stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+          <path d="M 152 200 C 162 172, 192 128, 218 96 C 240 68, 250 44, 240 30 C 232 20, 214 22, 204 36"
+                stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+          <path d="M 148 216 C 138 244, 108 292, 84 328 C 62 362, 52 384, 64 394 C 72 402, 90 398, 98 384"
+                stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+          <path d="M 152 216 C 162 244, 192 292, 216 328 C 238 362, 248 384, 236 394 C 228 402, 210 398, 202 384"
+                stroke="#1976C5" stroke-width="28" stroke-linecap="round"/>
+          <path d="M 150 10 C 165 24, 168 50, 150 62 C 132 50, 135 24, 150 10 Z" fill="#1976C5"/>
+        </svg>
+        <div>
+          <div class="footer-name">RADIX</div>
+          <div class="footer-name-sub">Consultores Inmobiliarios</div>
+        </div>
+      </div>
+      <div class="footer-legal">
+        Propuesta elaborada en el marco de una gesti&oacute;n inmobiliaria profesional.<br>
+        Valores en d&oacute;lares sujetos a negociaci&oacute;n. &copy; RADIX &mdash; Junio 2026.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
