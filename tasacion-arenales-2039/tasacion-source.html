@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>RADIX — Estimación de Valor Arenales 2039</title>
+<style>
+/* __FONT_FACES__ */
+
+*{box-sizing:border-box; margin:0; padding:0;}
+@page{ size:210mm 297mm; margin:0; }
+html,body{width:210mm;}
+body{
+  font-family:'Geist Sans', system-ui, sans-serif;
+  color:#172C4D;
+  background:#FFFFFF;
+}
+:root{
+  --primario:#1976C5;
+  --ink:#172C4D;
+  --ink-secondary:#54627C;
+  --ink-tenue:#7E8FA5;
+  --line:#DDE3EC;
+  --paper:#FFFFFF;
+  --serif:'Instrument Serif', Georgia, serif;
+}
+.page{
+  width:210mm; height:297mm; position:relative; overflow:hidden;
+  page-break-after:always; background:var(--paper);
+  display:flex; flex-direction:column;
+}
+.page:last-child{page-break-after:auto;}
+
+.word{font-family:'Geist Sans',sans-serif; font-weight:600; text-transform:uppercase; color:var(--ink); letter-spacing:3px; font-size:12pt;}
+.tag{font-family:'Geist Sans',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:1.4px; font-size:8pt; color:#fff; background:var(--primario); padding:4.5pt 10pt;}
+.serif{font-family:var(--serif); font-weight:400; color:var(--ink);}
+.eyebrow{font-family:'Geist Sans',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:1.6px; font-size:8.5pt; color:var(--primario); display:block;}
+.cap{font-family:'Geist Sans',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:7.5pt; color:var(--ink-tenue);}
+.body-txt{font-family:'Geist Sans',sans-serif; font-weight:300; font-size:10.5pt; line-height:1.65; color:var(--ink-secondary);}
+
+.phead{flex-shrink:0; display:flex; align-items:center; justify-content:space-between; padding-bottom:5mm; border-bottom:0.6pt solid var(--line); margin-bottom:8mm;}
+
+/* ===== PAGE 1 — Portada ===== */
+.page1{padding:16mm 20mm 14mm;}
+.page1 .phead{margin-bottom:0;}
+.p1-photo-wrap{flex-shrink:0; margin-top:12mm; border:0.6pt solid var(--line); padding:4mm; background:#FBFCFD;}
+.p1-photo-wrap img{display:block; width:100%; height:105mm; object-fit:cover;}
+
+.p1-title{flex-shrink:0; margin-top:11mm;}
+.p1-title .serif{font-size:27pt; line-height:1.1;}
+.p1-sub{flex-shrink:0; margin-top:3mm; font-size:10.5pt; letter-spacing:.3px; color:var(--ink-secondary);}
+.p1-line{flex-shrink:0; margin-top:6mm; width:10mm; height:0.7mm; background:var(--primario);}
+
+.value{flex-shrink:0; margin-top:6mm;}
+.value .amt{font-family:var(--serif); font-size:30pt; color:var(--ink); line-height:1;}
+.value .sub{font-family:'Geist Sans',sans-serif; font-size:8.5pt; color:var(--ink-tenue); margin-top:2mm; letter-spacing:.3px;}
+
+.specstrip{flex-shrink:0; margin-top:auto; padding-top:6mm; border-top:0.6pt solid var(--line); display:flex;}
+.specstrip .col{flex:1; padding-right:6mm; border-right:0.6pt solid var(--line);}
+.specstrip .col:last-child{border-right:none;}
+.specstrip .val{font-family:var(--serif); font-size:13pt; color:var(--ink);}
+.specstrip .lbl{margin-top:1.5mm;}
+
+.pfooter{flex-shrink:0; margin-top:8mm; display:flex; justify-content:space-between; align-items:center;}
+
+/* ===== Inner pages ===== */
+.pageN{padding:13mm 18mm 10mm;}
+.pageN .phead .word{font-size:10pt;}
+
+.sect{flex-shrink:0;}
+.sect + .sect{margin-top:8mm;}
+.sect p{margin-top:3.2mm;}
+.sect p:first-of-type{margin-top:0;}
+
+table.spec{flex-shrink:0; width:100%; border-collapse:collapse; font-size:9.5pt;}
+table.spec td{padding:3.2mm 0; border-bottom:0.6pt solid var(--line); color:var(--ink-secondary); vertical-align:top; line-height:1.35;}
+table.spec td.k{color:var(--ink); font-weight:500; width:56mm;}
+
+.gallery{flex-shrink:0; display:grid; grid-template-columns:1fr 1fr; gap:4mm;}
+.gallery figure{margin:0;}
+.gallery img{width:100%; height:52mm; object-fit:cover; display:block;}
+.gallery figcaption{margin-top:2.5mm; font-size:7.5pt; color:var(--ink-tenue); letter-spacing:.2px;}
+
+table.comp{flex-shrink:0; width:100%; border-collapse:collapse; font-size:8.8pt;}
+table.comp th{text-align:left; font-weight:600; font-size:7.3pt; letter-spacing:.6px; text-transform:uppercase; color:var(--ink-tenue); padding:0 6mm 2.5mm 0; border-bottom:0.6pt solid var(--line);}
+table.comp td{padding:3mm 6mm 3mm 0; border-bottom:0.6pt solid var(--line); color:var(--ink-secondary); vertical-align:top; line-height:1.35;}
+table.comp td.k{color:var(--ink); font-weight:500;}
+.comp-note{margin-top:3mm; font-size:7.3pt; color:var(--ink-tenue); line-height:1.5;}
+
+.adjustrow{flex-shrink:0; display:flex; gap:10mm; margin-top:3mm;}
+.adjustrow .col{flex:1;}
+.adjustrow li{font-size:9pt; color:var(--ink-secondary); line-height:1.8; list-style:none;}
+.adjustrow .plus li::before{content:"+  "; color:#3FA66B; font-weight:700;}
+.adjustrow .minus li::before{content:"−  "; color:#C45A5A; font-weight:700;}
+
+.valuebox{flex-shrink:0; margin-top:8mm; border-top:0.6pt solid var(--line); border-bottom:0.6pt solid var(--line); padding:7mm 0;}
+.valuebox .amt{font-family:var(--serif); font-size:26pt; color:var(--ink); line-height:1;}
+.valuebox .sub{margin-top:2mm; font-size:9pt; color:var(--ink-secondary);}
+
+.contact{flex-shrink:0; margin-top:auto; padding-top:6mm; border-top:0.6pt solid var(--line); display:flex; justify-content:space-between; align-items:flex-end;}
+.contact .name{font-family:var(--serif); font-size:15pt; color:var(--ink);}
+.contact .role{margin-top:1.5mm; font-size:8.5pt; color:var(--ink-secondary);}
+.contact .reach{margin-top:2.5mm; font-size:8.5pt; color:var(--ink-secondary);}
+.contact .date{font-size:8.5pt; color:var(--ink-tenue); text-align:right;}
+
+.confid{flex-shrink:0; margin-top:5mm; font-size:6.8pt; color:var(--ink-tenue); line-height:1.5;}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — Portada ============ -->
+<div class="page page1">
+  <div class="phead">
+    <div class="word">RADIX</div>
+    <div class="tag">Estimación de Valor de Mercado</div>
+  </div>
+
+  <div class="p1-photo-wrap"><img src="fotos/hero.jpg"></div>
+
+  <div class="p1-title"><div class="serif">Arenales 2039, Piso 2° B</div></div>
+  <div class="p1-sub">Recoleta, Ciudad Autónoma de Buenos Aires</div>
+  <div class="p1-line"></div>
+
+  <div class="value">
+    <div class="amt">USD 292.000</div>
+    <div class="sub">≈ USD 2.891 / m² cubierto · ≈ USD 2.679 / m² total</div>
+  </div>
+
+  <div class="specstrip">
+    <div class="col"><div class="val">101 m²</div><div class="cap lbl">Cubiertos</div></div>
+    <div class="col"><div class="val">109 m²</div><div class="cap lbl">Totales</div></div>
+    <div class="col"><div class="val">3 + serv.</div><div class="cap lbl">Dormitorios</div></div>
+    <div class="col"><div class="val">2 + toil.</div><div class="cap lbl">Baños</div></div>
+  </div>
+
+  <div class="pfooter">
+    <div class="cap">RADIX Consultores Inmobiliarios</div>
+    <div class="cap">01 / 04</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 — El inmueble ============ -->
+<div class="page pageN">
+  <div class="phead">
+    <div class="word">RADIX</div>
+    <div class="cap">02 / 04</div>
+  </div>
+
+  <div class="sect">
+    <span class="eyebrow">El inmueble</span>
+    <p class="body-txt">Unidad de tres dormitorios —uno en suite— más dependencia de servicio, en el 2° piso de un edificio de valor patrimonial sobre calle Arenales, en pleno corazón de Recoleta.</p>
+    <p class="body-txt">La propiedad fue objeto de una refacción integral: pisos de parqué en excelente estado, cocina y baños completamente renovados, carpintería y aberturas de muy buena calidad, calefacción por losa radiante y sin humedades. El resultado es una unidad que, pese a la antigüedad del edificio, funciona y se percibe como una unidad a estrenar, con una calidad constructiva de 10/10.</p>
+  </div>
+
+  <div class="sect" style="margin-top:9mm;">
+    <table class="spec">
+      <tr><td class="k">Ubicación</td><td>Arenales 2039, piso 2° B — Recoleta, CABA</td></tr>
+      <tr><td class="k">Orientación</td><td>Sur — buena luminosidad, vista regular (frente)</td></tr>
+      <tr><td class="k">Superficie cubierta</td><td>101 m²</td></tr>
+      <tr><td class="k">Superficie total</td><td>109 m² (balcón de 8 m²)</td></tr>
+      <tr><td class="k">Ambientes</td><td>3 dormitorios (uno en suite) + dependencia de servicio</td></tr>
+      <tr><td class="k">Baños</td><td>2 baños completos + 1 toilette</td></tr>
+      <tr><td class="k">Living / comedor</td><td>Integrado</td></tr>
+      <tr><td class="k">Cocina</td><td>Separada, totalmente renovada</td></tr>
+      <tr><td class="k">Lavadero</td><td>Lavadero y tender independientes</td></tr>
+      <tr><td class="k">Calefacción</td><td>Losa radiante</td></tr>
+      <tr><td class="k">Estado de conservación</td><td>Excelente — refacción integral, sin humedades</td></tr>
+      <tr><td class="k">Calidad constructiva</td><td>10/10</td></tr>
+      <tr><td class="k">Documentación</td><td>Escritura. Apto crédito hipotecario</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 — Entorno y fotos ============ -->
+<div class="page pageN">
+  <div class="phead">
+    <div class="word">RADIX</div>
+    <div class="cap">03 / 04</div>
+  </div>
+
+  <div class="sect">
+    <span class="eyebrow">Entorno</span>
+    <p class="body-txt">Arenales 2039 se ubica en pleno corazón de Recoleta, uno de los barrios más tradicionales y mejor conectados de la Ciudad de Buenos Aires, con más de 40 líneas de colectivo, subte y tren en su entorno inmediato.</p>
+    <p class="body-txt">A metros de la Av. Santa Fe —eje comercial y gastronómico— y de la Av. Las Heras, combina la vida de barrio con acceso directo a colegios de referencia (Escuela Superior de Comercio Carlos Pellegrini, Escuela Argentina Modelo), centros de salud, museos y la oferta cultural que distingue a la zona. En sus corredores de mayor categoría —Av. Alvear, Av. Quintana— el valor del m² se sostiene históricamente por encima de USD 3.000, siendo Recoleta, junto con Palermo y Puerto Madero, uno de los tres barrios porteños con los valores más altos de la ciudad.</p>
+  </div>
+
+  <div class="sect" style="margin-top:10mm;">
+    <span class="eyebrow" style="margin-bottom:4mm;">Fotos</span>
+    <div class="gallery">
+      <figure><img src="fotos/foto-cocina.jpg"><figcaption>Cocina</figcaption></figure>
+      <figure><img src="fotos/foto-dormitorio-principal.jpg"><figcaption>Dormitorio principal</figcaption></figure>
+      <figure><img src="fotos/foto-dormitorio-servicio.jpg"><figcaption>Dormitorio de servicio</figcaption></figure>
+      <figure><img src="fotos/foto-toilette.jpg"><figcaption>Toilette</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 4 — Análisis de mercado y valor ============ -->
+<div class="page pageN">
+  <div class="phead">
+    <div class="word">RADIX</div>
+    <div class="cap">04 / 04</div>
+  </div>
+
+  <div class="sect">
+    <span class="eyebrow">Análisis comparativo de mercado</span>
+    <table class="comp" style="margin-top:4mm;">
+      <tr><th>Referencia</th><th>Perfil</th><th>Precio / Valor</th><th>Fuente</th></tr>
+      <tr>
+        <td class="k">Arenales 2800, 3° piso</td>
+        <td>3 amb., reciclado impecable, ~159 m² tot.*</td>
+        <td class="k">USD 280.000</td>
+        <td>Argenprop, 2026</td>
+      </tr>
+      <tr>
+        <td class="k">Promedio de zona</td>
+        <td>Usados, buen estado, Recoleta</td>
+        <td class="k">USD 2.800 – 3.500 /m²</td>
+        <td>Relevamiento sectorial, 2026</td>
+      </tr>
+      <tr>
+        <td class="k">Promedio general</td>
+        <td>Todo tipo de unidades, Recoleta</td>
+        <td class="k">USD 2.459 /m²</td>
+        <td>Mudafy, ene. 2026</td>
+      </tr>
+    </table>
+    <p class="comp-note">*Superficie total del comparable incluye semicubiertos; su incidencia por m² no es directamente comparable con la unidad tasada. Valores relevados en portales públicos y fuentes sectoriales a agosto de 2026, sujetos a variación y verificación directa antes de su uso.</p>
+  </div>
+
+  <div class="sect" style="margin-top:8mm;">
+    <span class="eyebrow">Ajustes sobre el valor de zona</span>
+    <div class="adjustrow">
+      <div class="col plus">
+        <li>Refacción integral, calidad constructiva 10/10</li>
+        <li>Calefacción por losa radiante, sin humedades</li>
+      </div>
+      <div class="col minus">
+        <li>Piso 2° — no incide como lo haría un piso alto</li>
+        <li>Orientación sur, vista regular</li>
+      </div>
+    </div>
+  </div>
+
+  <div class="valuebox">
+    <div class="amt">USD 292.000</div>
+    <div class="sub">≈ USD 2.891 /m² cubierto — dentro del rango de mercado relevado para la zona y el perfil de la unidad (método comparativo directo).</div>
+  </div>
+
+  <div class="sect">
+    <span class="eyebrow">Comprador ideal</span>
+    <p class="body-txt">Familia joven, poco numerosa, que prioriza ubicación consolidada y terminaciones de alta calidad por sobre piso alto o vista panorámica.</p>
+  </div>
+
+  <div class="sect" style="margin-top:7mm;">
+    <span class="eyebrow">Observaciones generales</span>
+    <p class="body-txt">Unidad impecable (10/10). Único punto de mejora sugerido: unificar los zócalos existentes para terminar de armonizar con el resto de la refacción. No corresponde valorarla con los mismos parámetros que una unidad equivalente ubicada de un 5° piso hacia arriba — considerando esa salvedad y la antigüedad del edificio, es una unidad excelente con una muy buena relación entre calidad y precio.</p>
+  </div>
+
+  <div class="contact">
+    <div>
+      <div class="name">Teodoro Rauch Uriburu</div>
+      <div class="role">RADIX Consultores Inmobiliarios</div>
+      <div class="reach">+54 3875 77 6071 · teorauch@gmail.com</div>
+    </div>
+    <div class="date">Agosto 2026</div>
+  </div>
+
+  <div class="confid">Este informe constituye una estimación de valor de mercado elaborada por RADIX Consultores Inmobiliarios en base a relevamiento comparativo e inspección de la unidad mediante fotografías y datos aportados por el propietario. No constituye una tasación con validez legal, bancaria o judicial —la cual requiere de un profesional matriculado actuando conforme la normativa vigente— ni reemplaza la verificación registral y catastral correspondiente.</div>
+</div>
+
+</body>
+</html>

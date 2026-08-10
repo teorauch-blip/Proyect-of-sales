@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>RADIX — Ficha Terreno H. de Lerma 178</title>
+<style>
+/* __FONT_FACES__ */
+
+*{box-sizing:border-box; margin:0; padding:0;}
+@page{ size:210mm 297mm; margin:0; }
+html,body{width:210mm;}
+body{
+  font-family:'Geist Sans', system-ui, sans-serif;
+  color:#172C4D;
+  background:#FFFFFF;
+}
+:root{
+  --primario:#1976C5;
+  --ink:#172C4D;
+  --ink-secondary:#54627C;
+  --ink-tenue:#7E8FA5;
+  --line:#DDE3EC;
+  --paper:#FFFFFF;
+  --serif:'Instrument Serif', Georgia, serif;
+}
+.page{
+  width:210mm; height:297mm; position:relative; overflow:hidden;
+  page-break-after:always; background:var(--paper);
+  display:flex; flex-direction:column;
+}
+.page:last-child{page-break-after:auto;}
+
+.word{font-family:'Geist Sans',sans-serif; font-weight:600; text-transform:uppercase; color:var(--ink); letter-spacing:3px; font-size:12pt;}
+.tag{font-family:'Geist Sans',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:1.4px; font-size:8pt; color:#fff; background:var(--primario); padding:4.5pt 10pt;}
+.serif{font-family:var(--serif); font-weight:400; color:var(--ink);}
+.eyebrow{font-family:'Geist Sans',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:1.6px; font-size:8.5pt; color:var(--primario);}
+.cap{font-family:'Geist Sans',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:7.5pt; color:var(--ink-tenue);}
+.body-txt{font-family:'Geist Sans',sans-serif; font-weight:300; font-size:10.5pt; line-height:1.65; color:var(--ink-secondary);}
+
+/* ===== PAGE 1 — Portada ===== */
+.page1{padding:16mm 20mm 14mm;}
+.p1-head{flex-shrink:0; display:flex; align-items:center; justify-content:space-between; padding-bottom:6mm; border-bottom:0.6pt solid var(--line);}
+
+.p1-photo-wrap{flex-shrink:0; margin-top:12mm; border:0.6pt solid var(--line); padding:4mm; background:#FBFCFD;}
+.p1-photo-wrap img{display:block; width:100%; height:118mm; object-fit:cover;}
+
+.p1-title{flex-shrink:0; margin-top:11mm;}
+.p1-title .serif{font-size:29pt; line-height:1.08;}
+.p1-sub{flex-shrink:0; margin-top:3mm; font-size:10.5pt; letter-spacing:.3px; color:var(--ink-secondary);}
+.p1-line{flex-shrink:0; margin-top:6mm; width:10mm; height:0.7mm; background:var(--primario);}
+
+.price{flex-shrink:0; margin-top:6mm;}
+.price .amt{font-family:var(--serif); font-size:25pt; color:var(--ink); line-height:1;}
+.price .sub{font-family:'Geist Sans',sans-serif; font-size:8.5pt; color:var(--ink-tenue); margin-top:2mm; letter-spacing:.3px;}
+
+.specstrip{flex-shrink:0; margin-top:auto; padding-top:6mm; border-top:0.6pt solid var(--line); display:flex;}
+.specstrip .col{flex:1; padding-right:6mm; border-right:0.6pt solid var(--line);}
+.specstrip .col:last-child{border-right:none;}
+.specstrip .val{font-family:var(--serif); font-size:14pt; color:var(--ink);}
+.specstrip .lbl{margin-top:1.5mm;}
+
+.p1-footer{flex-shrink:0; margin-top:8mm; display:flex; justify-content:space-between; align-items:center;}
+
+/* ===== PAGE 2 — Detalle ===== */
+.page2{padding:13mm 18mm 10mm;}
+.p2-head{flex-shrink:0; display:flex; align-items:center; justify-content:space-between; padding-bottom:5mm; border-bottom:0.6pt solid var(--line); margin-bottom:7mm;}
+.p2-head .word{font-size:10pt;}
+
+.p2-desc{flex-shrink:0; max-width:174mm;}
+.p2-desc .eyebrow{display:block; margin-bottom:3.5mm;}
+.p2-desc p{margin-top:3.2mm;}
+
+table.spec2{flex-shrink:0; width:100%; border-collapse:collapse; margin-top:7mm; font-size:9.5pt;}
+table.spec2 td{padding:3.4mm 0; border-bottom:0.6pt solid var(--line); color:var(--ink-secondary); vertical-align:top; line-height:1.35;}
+table.spec2 td.k{color:var(--ink); font-weight:500; width:62mm;}
+
+.invrow{flex-shrink:0; display:flex; margin-top:7mm; gap:12mm;}
+.invrow .item{flex:1;}
+.invrow .n{font-family:var(--serif); font-size:19pt; color:var(--ink); line-height:1;}
+.invrow .l{margin-top:2mm;}
+
+.gallery{flex-shrink:0; display:flex; gap:4mm; margin-top:7mm;}
+.gallery figure{flex:1; margin:0;}
+.gallery img{width:100%; height:30mm; object-fit:cover; display:block;}
+.gallery figcaption{margin-top:2.5mm; font-size:7.5pt; color:var(--ink-tenue); letter-spacing:.2px;}
+
+.contact{flex-shrink:0; margin-top:auto; padding-top:6mm; border-top:0.6pt solid var(--line); display:flex; justify-content:space-between; align-items:flex-end;}
+.contact .name{font-family:var(--serif); font-size:15pt; color:var(--ink);}
+.contact .role{margin-top:1.5mm; font-size:8.5pt; color:var(--ink-secondary);}
+.contact .reach{margin-top:2.5mm; font-size:8.5pt; color:var(--ink-secondary);}
+.contact .cta{font-family:'Geist Sans',sans-serif; font-weight:600; font-size:8.5pt; letter-spacing:1px; text-transform:uppercase; color:var(--primario); border-bottom:0.6pt solid var(--primario); padding-bottom:1.5mm;}
+
+.confid{flex-shrink:0; margin-top:5mm; font-size:6.8pt; color:var(--ink-tenue); line-height:1.45;}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<div class="page page1">
+  <div class="p1-head">
+    <div class="word">RADIX</div>
+    <div class="tag">Oportunidad de Desarrollo</div>
+  </div>
+
+  <div class="p1-photo-wrap">
+    <img src="fotos/hero.jpg">
+  </div>
+
+  <div class="p1-title"><div class="serif">Terreno H. de Lerma 178</div></div>
+  <div class="p1-sub">Microcentro · Salta Capital, Provincia de Salta</div>
+  <div class="p1-line"></div>
+
+  <div class="price">
+    <div class="amt">USD 1.000.000</div>
+    <div class="sub">≈ USD 716 / m² sobre superficie de terreno</div>
+  </div>
+
+  <div class="specstrip">
+    <div class="col"><div class="val">1.396,92 m²</div><div class="cap lbl">Superficie</div></div>
+    <div class="col"><div class="val">17,14 m</div><div class="cap lbl">Frente</div></div>
+    <div class="col"><div class="val">74,60 m</div><div class="cap lbl">Fondo</div></div>
+    <div class="col"><div class="val">4.100 m²</div><div class="cap lbl">A desarrollar (máx.)</div></div>
+  </div>
+
+  <div class="p1-footer">
+    <div class="cap">RADIX Consultores Inmobiliarios</div>
+    <div class="cap">01 / 02</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 ============ -->
+<div class="page page2">
+  <div class="p2-head">
+    <div class="word">RADIX</div>
+    <div class="cap">02 / 02</div>
+  </div>
+
+  <div class="p2-desc">
+    <span class="eyebrow">Sobre el terreno</span>
+    <p class="body-txt">Lote urbano de 1.396,92&nbsp;m² sobre calle H. de Lerma, en pleno microcentro de Salta Capital, con buen nivel de tránsito y acceso directo al casco céntrico.</p>
+    <p class="body-txt">Las construcciones existentes en el predio —un tinglado parabólico y edificaciones menores— presentan un estado de deterioro y no condicionan el desarrollo: el valor del activo está en la tierra y en su capacidad constructiva. La normativa vigente habilita una superficie vendible de hasta 4.100&nbsp;m², equivalente a un factor de ocupación total aproximado de 2,9 veces la superficie del terreno.</p>
+  </div>
+
+  <table class="spec2">
+    <tr><td class="k">Ubicación</td><td>Calle H. de Lerma N° 178, microcentro, Salta Capital</td></tr>
+    <tr><td class="k">Superficie del terreno</td><td>1.396,92 m²</td></tr>
+    <tr><td class="k">Frente / Fondo</td><td>17,14 m / 74,60 m</td></tr>
+    <tr><td class="k">Superficie vendible a desarrollar</td><td>Hasta 4.100 m² (FOT aprox. 2,9x)</td></tr>
+    <tr><td class="k">Estado actual</td><td>Tinglado parabólico y construcciones menores, deterioradas — sin valor incremental</td></tr>
+    <tr><td class="k">Amenities</td><td>No aplica — lote a desarrollar</td></tr>
+  </table>
+
+  <div class="invrow">
+    <div class="item"><div class="n">USD 1,0M</div><div class="cap l">Precio de venta</div></div>
+    <div class="item"><div class="n">≈ USD 716</div><div class="cap l">Por m² de terreno</div></div>
+    <div class="item"><div class="n">≈ USD 244</div><div class="cap l">Por m² desarrollable</div></div>
+  </div>
+
+  <div class="gallery">
+    <figure><img src="fotos/foto-2-tinglado-a.jpg"><figcaption>Tinglado parabólico — vista interior</figcaption></figure>
+    <figure><img src="fotos/foto-3-tinglado-b.jpg"><figcaption>Tinglado parabólico — acceso posterior</figcaption></figure>
+    <figure><img src="fotos/foto-4-lateral.jpg"><figcaption>Sector lateral del predio</figcaption></figure>
+  </div>
+
+  <div class="contact">
+    <div>
+      <div class="name">Teodoro Rauch Uriburu</div>
+      <div class="role">Agente — RADIX Consultores Inmobiliarios</div>
+      <div class="reach">+54 3875 77 6071 · teorauch@gmail.com</div>
+    </div>
+    <div class="cta">Coordinar visita →</div>
+  </div>
+
+  <div class="confid">Documento confidencial, preparado exclusivamente para clientes seleccionados de RADIX Consultores Inmobiliarios. Superficies y medidas sujetas a verificación registral y catastral.</div>
+</div>
+
+</body>
+</html>
